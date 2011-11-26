@@ -1,6 +1,6 @@
-Arduino based game conttroller for HTML5 Helicopter game
+Arduino based game controller for HTML5 Helicopter game
 ========================================================
-Arduino based game controller for HTML5 Helicopter game. The controller is connected to an Android device which routes the data to the game played on the browser. The communication to browser happens over web sockets. Powered by Node.js and Socket.io
+Arduino based game controller for HTML5 Helicopter game. The controller is connected to an Android device which routes the data to the game played on the browser. The communication with the browser happens over web sockets. Powered by Node.js and Socket.io
 
 Current version: 1.0
 
