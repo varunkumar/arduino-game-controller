@@ -6,7 +6,7 @@ Current version: 1.0
 
 Hosted at: http://varunkumar.no.de (Multi-player mode might not work properly as no.de does not support web sockets)
 
-For more information: http://blog.varunkumar.me
+For more information: http://blog.varunkumar.me/2011/11/arduino-based-game-controller.html
 
 Modules
 --------
@@ -67,7 +67,7 @@ Powered By
 
 How to Contribute?
 ------------------
-The source code is available [here](https://github.com/varunkumar/arduino-game-controller) under MIT licence. Please send any bugs, feedback, complaints, patches about the extension to me at varunkumar[dot]n[at]gmail[dot]com.
+The source code is available [here](https://github.com/varunkumar/arduino-game-controller) under MIT licence. Please send any bugs, feedback, complaints, patches about the hack to me at varunkumar[dot]n[at]gmail[dot]com.
 
 -- [Varun](http://www.varunkumar.me)
 
