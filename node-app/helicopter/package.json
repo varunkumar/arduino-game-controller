@@ -1,0 +1,19 @@
+{
+  "author": "Varunkumar Nagarajan <varunkumar.n@gmail.com> (http://www.varunkumar.me)",
+  "name": "varunkumar.no.de",
+  "description": "Packages used by Varunkumar.no.de",
+  "version": "1.0.0",
+  "homepage": "http://www.varunkumar.me",
+  "repository": {
+    "url": ""
+  },
+  "main": "server.js",
+  "engines": {
+    "node": "0.4.11"
+  },
+  "dependencies": {
+    "socket.io": "~0.8.2",
+    "express": "~2.4.6"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Game Controller</string>
+    <string name="joysX">X: </string>
+    <string name="joysY">Y:</string>
+    <string name="actionbar_activity_not_found">Failed to open intent...</string>
+</resources>

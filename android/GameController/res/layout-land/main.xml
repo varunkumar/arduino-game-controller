@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+<com.markupartist.android.widget.ActionBar
+        android:id="@+id/actionbar"
+        style="@style/ActionBar"
+        />
+
+<LinearLayout
+    android:id="@+id/layURL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/lblURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL (ws://)  "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/txtURL"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.59" >
+
+        <requestFocus />
+    </EditText>
+</LinearLayout>
+
+<LinearLayout
+    android:id="@+id/layToken"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Host Token "
+        android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/lblToken"/>
+
+    <EditText
+        android:id="@+id/txtToken"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content" android:layout_weight="0.59"/>
+
+</LinearLayout>
+
+<LinearLayout
+    android:id="@+id/layAction"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right" >
+
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:text="Scan QR Code" />
+
+    <Button
+        android:id="@+id/btnConnect"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:text="Connect" />
+</LinearLayout>
+
+<TextView
+    android:id="@+id/lblX"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/joysX"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/lblY"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/joysY"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</LinearLayout>
