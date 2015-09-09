@@ -31,7 +31,7 @@ The project has three core modules:
 How to play?
 ------------
 - Start the game on your local machine (as per the instructions given in Game Module section).
-- Visit http://localhost:8080 on your browser. (Recommended : Latest version of Chrome, Firefox).
+- Visit http://localhost:3600 on your browser. (Recommended : Latest version of Chrome, Firefox).
 - Enter a passcode (secret code) which will be used by the controller / other player to connect to your game.
 - Click anywhere on the screen / press enter to start the game in single player mode.
 - You can use arrow keys / mouse press / Leap motion gestures to ride the copter.
@@ -72,4 +72,4 @@ The source code is available [here](https://github.com/varunkumar/arduino-game-c
 
 -- [Varun](http://www.varunkumar.me)
 
-Last Modified: Thu Sep 10 00:12:36 IST 2015
+Last Modified: Thu Sep 10 00:40:36 IST 2015
