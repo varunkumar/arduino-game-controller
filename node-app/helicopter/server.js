@@ -11,7 +11,17 @@ app.listen(8080);
 
 // Router 
 app.get("/", function(req, res) {
-  res.sendfile(__dirname + "/index.html");
+  res.sendfile('/index.html', {
+      root: __dirname
+    })
+    //res.sendfile(__dirname + "/index.html");
+});
+
+app.get("/leaptest", function(req, res) {
+  res.sendfile('/leap-test.html', {
+      root: __dirname
+    })
+    //res.sendfile(__dirname + "/index.html");
 });
 
 app.use("/static", express.static(__dirname + "/static"));

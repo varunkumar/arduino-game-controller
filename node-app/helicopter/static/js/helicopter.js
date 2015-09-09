@@ -266,11 +266,12 @@ Heli.User = function(params) {
 
     _distance += 1;
 
-    _momentum += ((_thrusters) ? 0.4 : -0.5);
+    _momentum += ((_thrusters) ? 0.2 : -0.3);
     _position.y += _momentum;
 
     var xPos = _position.x;
     xPos += (_acceleration * 1);
+    _acceleration = 0;
     xPos = ((xPos < 5) ? 5 : ((xPos > _numLines - 5) ? _numLines - 5 : xPos));
     _position.x = xPos;
 
@@ -641,7 +642,10 @@ var HELICOPTER = (function() {
     socket = null,
     passcode = null,
     hostToken = null,
-    token = null;
+    token = null,
+    prevPalmPosition = null,
+    currentPalmPosition = null,
+    tolerance = [30, 30];
 
   function keyDown(e, user) {
     if (e.sender === Heli.Sender.CONTROLLER || user == null || user === user1) {
@@ -847,6 +851,9 @@ var HELICOPTER = (function() {
       screen.init(patterns);
       timer = window.setInterval(mainLoop, 1000 / Heli.FPS);
       state = Heli.State.PLAYING;
+
+      prevPalmPosition = null;
+      _acceleration = 0;
     }
   }
 
@@ -1099,6 +1106,59 @@ var HELICOPTER = (function() {
     document.addEventListener("keyup", keyUp, true);
     document.addEventListener("mousedown", mouseDown, true);
     document.addEventListener("mouseup", mouseUp, true);
+
+    // Leap loop
+    var leapOptions = {
+      enableGestures: true
+    };
+    Leap.loop(leapOptions, function(frame) {
+      if (state == Heli.State.PLAYING) {
+        for (var i = 0, len = frame.hands.length; i < len; i++) {
+          var hand = frame.hands[i];
+          if (hand.type == 'right') {
+            currentPalmPosition = hand.palmPosition;
+            if (prevPalmPosition) {
+              var changeX = currentPalmPosition[0] - prevPalmPosition[0];
+              var changeY = currentPalmPosition[1] - prevPalmPosition[1];
+              if (Math.abs(changeX) > tolerance[0]) {
+                if (changeX > 0) {
+                  audio.play("start");
+                  user1.setAcceleration(1);
+                  console.log("[Leap] Move Right");
+                } else {
+                  audio.play("start");
+                  user1.setAcceleration(-1);
+                  console.log("[Leap] Move Left");
+                }
+                prevPalmPosition = currentPalmPosition;
+              } else {
+                // Reset direction
+                audio.stop("start");
+              }
+              if (Math.abs(changeY) > tolerance[1]) {
+                if (changeY > 0) {
+                  audio.play("start");
+                  user1.setThrusters(true);
+                  console.log("[Leap] Move Up");
+                } else {
+                  audio.stop("start");
+                  user1.setThrusters(false);
+                  console.log("[Leap] Move down");
+                }
+                prevPalmPosition = currentPalmPosition;
+              } else {
+                // Reset direction
+                audio.stop("start");
+              }
+            } else {
+              prevPalmPosition = currentPalmPosition;
+            }
+          }
+        }
+
+      }
+
+    });
 
     startScreen();
   }
