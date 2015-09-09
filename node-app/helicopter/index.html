@@ -1,75 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>HTML5 Helicopter</title>
-    
-    <style type="text/css">
-       * { margin:0px; padding:0px; }
-       body { width:800px; margin:0px auto; background:#333; }
-       #helicopter { margin: 10px 0px; font-family:SilkScreenBold; }
-       a { font-family:SilkScreen; color:white; text-decoration:none; }
-       a:hover { text-decoration:underline; }
-       body { visibility:hidden; }
-       html.wf-silkscreen-n4-active body { visibility:visible; }
-    </style>
-    
-    <script src="/socket.io/socket.io.js"></script>
+
+<head>
+  <meta charset="utf-8" />
+  <title>HTML5 Helicopter</title>
+  <style type="text/css">
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  body {
+    width: 800px;
+    margin: 0px auto;
+    background: #333;
+  }
+  
+  #helicopter {
+    margin: 10px 0px;
+    font-family: SilkScreenBold;
+  }
+  
+  a {
+    font-family: SilkScreen;
+    color: white;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  body {
+    visibility: hidden;
+  }
+  
+  html.wf-silkscreen-n4-active body {
+    visibility: visible;
+  }
+  </style>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
-
   <span style="font-family:SilkScreenBold;"> </span>
-
   <div id="helicopter"></div>
-
   <span style="font-family:SilkScreen;">P - Pause / Resume, H - Host a game, J - Join a game, S - Sound</span>
-  <br/><br/><span id="spnToken" style="font-family:SilkScreen;text-align:center;"></span>
-
+  <br/>
+  <br/><span id="spnToken" style="font-family:SilkScreen;text-align:center;"></span>
   <script src="static/js/helicopter.js"></script>
   <script src="static/js/modernizr-1.5.min.js"></script>
-
   <script>
+  var families = ["SilkScreenBold", "SilkScreen"];
 
-    var families = [ "SilkScreenBold", "SilkScreen"];
+  var INIT = (function(m, HELICOPTER, families) {
 
-    var INIT = (function (m, HELICOPTER, families) {
+    var numLoaded = 0,
+      numFonts = families.length,
+      helicopter = document.getElementById("helicopter");
 
-      var numLoaded  = 0, 
-          numFonts   = families.length,
-          helicopter = document.getElementById("helicopter");
-
-      function loaded() { 
-        if (m.canvas && m.localstorage && m.audio && 
-            (m.audio.ogg || m.audio.mp3)) {
-          HELICOPTER.init(helicopter, "./static", "http://localhost:8080");
-        } else {    
-          el.innerHTML = "Sorry, needs a decent browser<br /><small>" + 
-            "(firefox 3.6+, Chrome 4+, Opera 10+ and Safari 4+)</small>";
-        }    
-      };
-
-      function fontLoaded(family, desc) {
-        if (++numLoaded === numFonts) {
-          loaded();
-        }
-      };
-    
-      return {"fontLoaded" : fontLoaded};
-
-    })(Modernizr, HELICOPTER, families);
-
-    WebFontConfig = { 
-      custom : { 
-        families : families, 
-        urls     : ["./static/fonts/silkscreenbold.css", "./static/fonts/silkscreen.css"]
-      },
-      fontactive : INIT.fontLoaded
+    function loaded() {
+      if (m.canvas && m.localstorage && m.audio &&
+        (m.audio.ogg || m.audio.mp3)) {
+        HELICOPTER.init(helicopter, "./static", "http://localhost:8080");
+      } else {
+        el.innerHTML = "Sorry, needs a decent browser<br /><small>" +
+          "(firefox 3.6+, Chrome 4+, Opera 10+ and Safari 4+)</small>";
+      }
     };
 
+    function fontLoaded(family, desc) {
+      if (++numLoaded === numFonts) {
+        loaded();
+      }
+    };
+
+    return {
+      "fontLoaded": fontLoaded
+    };
+
+  })(Modernizr, HELICOPTER, families);
+
+  WebFontConfig = {
+    custom: {
+      families: families,
+      urls: ["./static/fonts/silkscreenbold.css", "./static/fonts/silkscreen.css"]
+    },
+    fontactive: INIT.fontLoaded
+  };
   </script>
-
   <script src="static/js/webfont.js"></script>
-
 </body>
+
 </html>

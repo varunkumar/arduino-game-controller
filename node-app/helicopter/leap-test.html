@@ -1,0 +1,104 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <h1>Hello, LeapJS (V2)!</h1>
+  <div id="output"></div>
+  <script src="https://js.leapmotion.com/leap-0.6.4.js"></script>
+  <script type="text/javascript">
+  function concatData(id, data) {
+    return id + ": " + data + "<br>";
+  }
+
+  function getFingerName(fingerType) {
+    switch (fingerType) {
+      case 0:
+        return 'Thumb';
+        break;
+
+      case 1:
+        return 'Index';
+        break;
+
+      case 2:
+        return 'Middle';
+        break;
+
+      case 3:
+        return 'Ring';
+        break;
+
+      case 4:
+        return 'Pinky';
+        break;
+    }
+  }
+
+  function concatJointPosition(id, position) {
+    return id + ": " + position[0] + ", " + position[1] + ", " + position[2] + "<br>";
+  }
+
+
+  var output = document.getElementById('output');
+  var frameString = "",
+    handString = "",
+    fingerString = "";
+  var hand, finger;
+
+  // Leap.loop uses browser's requestAnimationFrame
+  var options = {
+    enableGestures: true
+  };
+
+  // Main Leap Loop
+  var prevPalmPosition, currentPalmPosition, tolerance = 50;
+  Leap.loop(options, function(frame) {
+    frameString = concatData("frame_id", frame.id);
+    frameString += concatData("num_hands", frame.hands.length);
+    frameString += concatData("num_fingers", frame.fingers.length);
+    frameString += "<br>";
+
+    // Showcase some new V2 features
+    for (var i = 0, len = frame.hands.length; i < len; i++) {
+      hand = frame.hands[i];
+      handString = concatData("hand_type", hand.type);
+      handString += concatData("confidence", hand.confidence);
+      handString += "test" + concatJointPosition("palm_position", hand.palmPosition);
+
+      currentPalmPosition = hand.palmPosition;
+      if (prevPalmPosition) {
+        var changeX = currentPalmPosition[0] - prevPalmPosition[0];
+        var changeY = currentPalmPosition[1] - prevPalmPosition[1];
+        if (Math.abs(changeX) > tolerance) {
+          var dirX = changeX > 0 ? "Move Right" : "Move Left";
+          console.log(dirX);
+          prevPalmPosition = currentPalmPosition;
+        } else {
+          // Reset direction
+        }
+        if (Math.abs(changeY) > tolerance) {
+          var dirY = changeY > 0 ? "Move Up" : "Move Down";
+          console.log(dirY);
+          prevPalmPosition = currentPalmPosition;
+        } else {
+          // Reset direction
+        }
+      } else {
+        prevPalmPosition = currentPalmPosition;
+      }
+
+
+      handString += '<br>';
+    }
+
+    frameString += handString;
+
+    output.innerHTML = frameString;
+
+  });
+  </script>
+</body>
+
+</html>
