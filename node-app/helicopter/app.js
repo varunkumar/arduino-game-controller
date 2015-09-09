@@ -8,6 +8,13 @@ app.configure(function() {
 });
 
 app.listen(3600);
+process.send('online');
+
+process.on('message', function() {
+  if (message === 'shutdown') {
+    process.exit(0);
+  }
+})
 
 // Router 
 app.get("/", function(req, res) {
