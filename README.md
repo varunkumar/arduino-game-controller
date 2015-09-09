@@ -2,9 +2,9 @@ Arduino based game controller for HTML5 Helicopter game
 ========================================================
 Arduino based game controller for HTML5 Helicopter game. The controller is connected to an Android device which routes the data to the game played on the browser. The communication with the browser happens over web sockets. Powered by Node.js and Socket.io
 
-Current version: 1.0
+Current version: 1.1
 
-Hosted at: http://varunkumar.no.de (Multi-player mode might not work properly as no.de does not support web sockets)
+Hosted at: http://copter@varunkumar.me 
 
 For more information: http://blog.varunkumar.me/2011/11/arduino-based-game-controller.html
 
@@ -34,6 +34,7 @@ How to play?
 - Visit http://localhost:8080 on your browser. (Recommended : Latest version of Chrome, Firefox).
 - Enter a passcode (secret code) which will be used by the controller / other player to connect to your game.
 - Click anywhere on the screen / press enter to start the game in single player mode.
+- You can use arrow keys / mouse press / Leap motion gestures to ride the copter.
 
 ###Multi-player mode
 - Press 'H' to host a multi-player game. Share 'Host Token' secretly to the second player. This is displayed at the bottom of the page.
@@ -71,4 +72,4 @@ The source code is available [here](https://github.com/varunkumar/arduino-game-c
 
 -- [Varun](http://www.varunkumar.me)
 
-Last Modified: Sat Nov 26 19:13:36 IST 2011
+Last Modified: Thu Sep 10 00:12:36 IST 2015
