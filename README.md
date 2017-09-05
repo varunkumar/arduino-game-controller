@@ -12,17 +12,17 @@ Modules
 --------
 The project has three core modules:
 
-###Game module
+### Game module
 - HTML5 based Helicopter game. Uses Canvas for rendering the game.
 - Powered by Node.js and socket.io.
 - Supports multi-player mode using web sockets & related technologies.
 - To start the game, go inside node-app/helicopter and run 'node server.js'. This will start a local instance on port 8080. You can configure the port on server.js
 
-###Joystick module
+### Joystick module
 - Accessories used: [Arduino Mega ADK](http://www.arduino.cc/en/Main/ArduinoBoardADK) + [Joystick Shield](http://simplelabs.co.in/content/joystick-shield-fully-assembled)
 - Arduino firmware to read analog inputs and to pass the data to Android phone using [Accessory protocol](http://developer.android.com/guide/topics/usb/adk.html).
 
-###Android module
+### Android module
 - Android driver app for linking the game and the controller.
 - Compatible with devices running 2.3.4+.
 - Listens for data from the USB accessory and forwards the joystick events to the game via web sockets.
@@ -36,14 +36,14 @@ How to play?
 - Click anywhere on the screen / press enter to start the game in single player mode.
 - You can use arrow keys / mouse press / Leap motion gestures to ride the copter.
 
-###Multi-player mode
+### Multi-player mode
 - Press 'H' to host a multi-player game. Share 'Host Token' secretly to the second player. This is displayed at the bottom of the page.
 - The second player has to press 'J' to join this game. Key in the host token when prompted. 
 - Game starts after keying in the host token. 
 - You are always the first player (irrespective of hosting / joining a game).
 - The game ends when any of the two players crashes against the wall or the obstacles.
 
-###Playing with the game controller
+### Playing with the game controller
 - Manually key in 'Host Token' and the web socket URL to connect to. 
 - Alternately, you can use the option 'Scan QR Code' in the Android app. Scan the QR code which is displayed at the bottom of the page.
 - Press 'Connect' to connect to the server and send Joystick events.
@@ -71,5 +71,3 @@ How to Contribute?
 The source code is available [here](https://github.com/varunkumar/arduino-game-controller) under MIT licence. Please send any bugs, feedback, complaints, patches about the hack to me at varunkumar[dot]n[at]gmail[dot]com.
 
 -- [Varun](http://www.varunkumar.me)
-
-Last Modified: Thu Sep 10 01:07:36 IST 2015
