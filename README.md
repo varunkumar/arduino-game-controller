@@ -4,7 +4,7 @@ Arduino based game controller for HTML5 Helicopter game. The controller is conne
 
 Current version: 1.1
 
-Hosted at: http://copter@varunkumar.me 
+Hosted at: http://copter.varunkumar.me 
 
 For more information: http://blog.varunkumar.me/2011/11/arduino-based-game-controller.html
 
